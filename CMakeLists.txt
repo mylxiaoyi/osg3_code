@@ -4,3 +4,4 @@ project(osg3)
 
 add_subdirectory(ch04)
 add_subdirectory(ch05)
+add_subdirectory(ch06)
