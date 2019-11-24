@@ -8,19 +8,18 @@ public:
     AnimatingSwitch(const AnimatingSwitch& copy, const osg::CopyOp& copyop = osg::CopyOp::SHALLOW_COPY) : osg::Switch(copy, copyop), _count(copy._count) {}
     META_Object(osg, AnimatingSwitch);
 
-    virtual void travese(osg::NodeVisitor& nv);
+    virtual void traverse(osg::NodeVisitor& nv);
 
 protected:
     unsigned int _count;
 };
 
-void AnimatingSwitch::travese(osg::NodeVisitor &nv) {
-    if (!(++_count)%10) {
+void AnimatingSwitch::traverse(osg::NodeVisitor &nv) {
+    if (!(++_count)%60) {
         setValue(0, !getValue(0));
         setValue(1, !getValue(1));
     }
 
-    std::cout << "_count = " << _count << std::endl;
     osg::Switch::traverse(nv);
 }
 
